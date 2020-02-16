@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package fr.lacombe.serialization;
+option java_package = "fr.lacombe.serialization";
+option java_outer_classname = "UserProto";
+
+message User {
+    string userName = 1;
+    string lastName = 2;
+    int32 age = 3;
+    repeated Hobby hobbies = 4;
+}
+
+message Hobby {
+    string name = 1;
+}
