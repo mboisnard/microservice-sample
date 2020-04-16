@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  activemq:
+    image: rmohr/activemq:5.15.9-alpine
+    ports:
+      - 5000:8161
+      - 5001:5672
+      - 5002:61616
+
+  # activemq-artemis:
+  #   image: vromero/activemq-artemis
+  #   environment:
+  #     - ARTEMIS_USERNAME=admin
+  #     - ARTEMIS_PASSWORD=admin
+  #   ports:
+  #     - 8161:8161
+  #     - 5672:5672
+  #     - 61616:61616
