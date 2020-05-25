@@ -21,14 +21,9 @@ public class ActiveMqController {
         jmsTemplate.convertAndSend("microservices.esgi.test", message);
     }
 
-    @JmsListener(destination = "microservices.esgi.test")
-    public void consumeMessage(String message) {
-        System.out.println(message);
-    }
-
     // Throws Exception to see message retry and send to DLQ in ActiveMq
-    /*@JmsListener(destination = "microservices.esgi.test")
+    @JmsListener(destination = "microservices.esgi.test")
     public void consumeMessage(String message) throws IllegalAccessException {
         throw new IllegalAccessException("message failed");
-    }*/
+    }
 }

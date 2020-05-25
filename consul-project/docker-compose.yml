@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  consul:
+    image: consul
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
+    ports:
+      - 5000:8500
+      - 5001:8600
