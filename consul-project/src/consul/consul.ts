@@ -13,7 +13,10 @@ class Consul {
     readonly tags = [
         'swagger_path=/documentation',
         `swagger_version=3.0.0`,
-        `swagger_title=ESGI Consul Application`
+        `swagger_title=ESGI Consul Application`,
+        'traefik.enable=true',
+        'traefik.frontend.entryPoints=http',
+        'traefik.frontend.rule=PathPrefixStrip:/toto/'
     ];
 
     readonly registrationDetails: RegistrationDetails;

@@ -1,5 +1,8 @@
 version: "3"
 
+networks:
+  consul-network:
+
 services:
   consul:
     image: consul
@@ -8,3 +11,32 @@ services:
     ports:
       - 5000:8500
       - 5001:8600
+    networks:
+      - consul-network
+
+  traefik:
+    build: ./traefik
+    image: traefik-consul:latest
+    ports:
+      - 8080:8080
+      - 80:80
+    networks:
+      - consul-network
+
+  nest-app:
+    build: .
+    image: nest-app:latest
+    environment:
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+    networks:
+      - consul-network
+
+  nest-app2:
+    build: .
+    image: nest-app:latest
+    environment:
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+    networks:
+      - consul-network
